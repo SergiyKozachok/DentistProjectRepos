@@ -6,6 +6,28 @@ import { HeaderComponent } from './header/header.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogUpFormComponent } from './log-up-form/log-up-form.component';
+import { IndexOfSiteComponent } from './index-of-site/index-of-site.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginFormComponent
+  },
+  {
+    path: 'logup',
+    component: LogUpFormComponent
+  },
+  {
+    path: 'home',
+    component: IndexOfSiteComponent
+  },
+  {
+    path: 'home',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -13,9 +35,11 @@ import { LogUpFormComponent } from './log-up-form/log-up-form.component';
     HeaderComponent,
     LoginFormComponent,
     FooterComponent,
-    LogUpFormComponent
+    LogUpFormComponent,
+    IndexOfSiteComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule
   ],
   providers: [],

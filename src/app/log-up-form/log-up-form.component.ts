@@ -17,18 +17,18 @@ export class LogUpFormComponent implements OnInit {
     let existingUsers = JSON.parse(localStorage.getItem('allUsers'));
     if (existingUsers == null) { existingUsers = []; }
 
-    let user, userLogin, userEmail, userPassword, userConfirmPassword, checking;
+    let user, userLogin, userEmail, userRole, userPassword, userConfirmPassword;
     userLogin = e.target.elements[0].value;
     userEmail = e.target.elements[1].value;
-    userPassword = e.target.elements[2].value;
-    userConfirmPassword = e.target.elements[3].value;
-    checking = this.logUpUser = () => {
-      this.CheckingTheUserForUniqueness(existingUsers, userLogin);
-    };
+    userRole = e.target.elements[2].value;
+    userPassword = e.target.elements[3].value;
+    userConfirmPassword = e.target.elements[4].value;
+    if (this.CheckingTheUserForUniqueness(existingUsers, userLogin)) {
       if (userPassword === userConfirmPassword) {
         user = {
           'login': userLogin,
           'email': userEmail,
+          'role': userRole,
           'password': userPassword,
         };
         user = JSON.stringify(user);
@@ -41,6 +41,7 @@ export class LogUpFormComponent implements OnInit {
       } else {
         alert('Password and confirm password must be the same');
       }
+    }
   }
 
   CheckingTheUserForUniqueness (existingUsers, userLogin) {
