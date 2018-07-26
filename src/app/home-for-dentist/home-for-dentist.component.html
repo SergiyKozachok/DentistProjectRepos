@@ -1,3 +1,23 @@
-<p>
-  home-for-dentist works!
-</p>
+<div class="container">
+  <p>
+    home-for-dentist works!
+  </p>
+
+  <button class="btn btn-primary" (click)="show($event)">Show users</button>
+
+  <table>
+    <tr>
+      <!--<th>Mark</th>-->
+      <th>Login</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+    <tr *ngFor="let u of users">
+      <!--<td><input type="checkbox" value=""></td>-->
+      <td>{{u.login}}</td>
+      <td>{{u.email}}</td>
+      <td>{{u.role}}</td>
+    </tr>
+  </table>
+
+</div>

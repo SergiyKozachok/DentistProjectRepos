@@ -12,6 +12,8 @@ import { HomeForDentistComponent } from './home-for-dentist/home-for-dentist.com
 import { HomeForPatientComponent } from './home-for-patient/home-for-patient.component';
 import { HomeForInternComponent } from './home-for-intern/home-for-intern.component';
 import { HomeForNorseComponent } from './home-for-norse/home-for-norse.component';
+import {UserService} from './user.service';
+import {AuthguardGuard} from './authguard.guard';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +30,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'home-for-dentist',
+    canActivate: [AuthguardGuard],
     component: HomeForDentistComponent
   },
   {
@@ -61,7 +64,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule
   ],
-  providers: [],
+  providers: [UserService, AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

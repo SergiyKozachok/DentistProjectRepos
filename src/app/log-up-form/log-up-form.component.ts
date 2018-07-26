@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-log-up-form',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LogUpFormComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private user: UserService) { }
 
   ngOnInit() {
   }
@@ -38,7 +39,7 @@ export class LogUpFormComponent implements OnInit {
         existingUsers.push(user);
         localStorage.setItem('allUsers', JSON.stringify(existingUsers));
         alert('The user of ' + userLogin + 'has been successfully registered');
-        switch (userRole){
+        switch (userRole) {
           case 'Dentist': {
             this.router.navigate(['home-for-dentist']);
             break;
