@@ -13,12 +13,4 @@ export class IndexOfSiteComponent implements OnInit {
   ngOnInit() {
   }
 
-  SignIn() {
-      this.router.navigate(['login']);
-  }
-
-  SignUp() {
-    this.router.navigate(['logup']);
-  }
-
 }

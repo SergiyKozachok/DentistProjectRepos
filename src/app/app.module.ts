@@ -19,14 +19,9 @@ const appRoutes: Routes = [
     component: LogUpFormComponent
   },
   {
-    path: 'home',
+    path: '',
     component: IndexOfSiteComponent
   },
-  {
-    path: 'home',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({
