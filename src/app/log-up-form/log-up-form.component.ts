@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-up-form',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogUpFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -37,7 +38,24 @@ export class LogUpFormComponent implements OnInit {
         existingUsers.push(user);
         localStorage.setItem('allUsers', JSON.stringify(existingUsers));
         alert('The user of ' + userLogin + 'has been successfully registered');
-
+        switch (userRole){
+          case 'Dentist': {
+            this.router.navigate(['home-for-dentist']);
+            break;
+          }
+          case 'Patient': {
+            this.router.navigate(['home-for-patient']);
+            break;
+          }
+          case 'Nurse': {
+            this.router.navigate(['home-for-norse']);
+            break;
+          }
+          case 'Intern': {
+            this.router.navigate(['home-for-intern']);
+            break;
+          }
+        }
       } else {
         alert('Password and confirm password must be the same');
       }

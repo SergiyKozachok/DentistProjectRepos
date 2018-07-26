@@ -8,6 +8,10 @@ import { FooterComponent } from './footer/footer.component';
 import { LogUpFormComponent } from './log-up-form/log-up-form.component';
 import { IndexOfSiteComponent } from './index-of-site/index-of-site.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeForDentistComponent } from './home-for-dentist/home-for-dentist.component';
+import { HomeForPatientComponent } from './home-for-patient/home-for-patient.component';
+import { HomeForInternComponent } from './home-for-intern/home-for-intern.component';
+import { HomeForNorseComponent } from './home-for-norse/home-for-norse.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +26,22 @@ const appRoutes: Routes = [
     path: '',
     component: IndexOfSiteComponent
   },
+  {
+    path: 'home-for-dentist',
+    component: HomeForDentistComponent
+  },
+  {
+    path: 'home-for-patient',
+    component: HomeForPatientComponent
+  },
+  {
+    path: 'home-for-norse',
+    component: HomeForNorseComponent
+  },
+  {
+    path: 'home-for-intern',
+    component: HomeForInternComponent
+  },
 ];
 
 @NgModule({
@@ -31,7 +51,11 @@ const appRoutes: Routes = [
     LoginFormComponent,
     FooterComponent,
     LogUpFormComponent,
-    IndexOfSiteComponent
+    IndexOfSiteComponent,
+    HomeForDentistComponent,
+    HomeForPatientComponent,
+    HomeForInternComponent,
+    HomeForNorseComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
