@@ -18,14 +18,14 @@ import {FormsModule} from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 const appRoutes: Routes = [
-  {
-    path: 'home',
-    component: IndexOfSiteComponent
-  },
+  // {
+  //   path: 'home',
+  //   component: IndexOfSiteComponent
+  // },
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    component: IndexOfSiteComponent,
+    // pathMatch: 'full'
   },
   {
     path: '**',

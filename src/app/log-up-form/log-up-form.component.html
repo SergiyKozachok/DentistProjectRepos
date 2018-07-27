@@ -3,13 +3,13 @@
     <h2>Sign Up</h2>
     <form>
       <div class="form-group">
-        <input class="form-control" #authLogin placeholder="Login">
+        <input [(ngModel)]="login" name="l" class="form-control" placeholder="Login" required>
       </div>
       <div class="form-group">
-        <input type="email" class="form-control" #authEmail placeholder="Email">
+        <input type="email" class="form-control" [(ngModel)]="email" name="e" placeholder="Email">
       </div>
       <div class="form-group">
-        <select #filterText style='display:inline-block' class="form-control">
+        <select [(ngModel)]="role" name="r" style='display:inline-block' class="form-control">
           <option disabled selected>-</option>
           <option value="Dentist">Dentist</option>
           <option value="Patient">Patient</option>
@@ -18,13 +18,13 @@
         </select>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" #authPassword placeholder="Password">
+        <input type="password" class="form-control" [(ngModel)]="password" name="p" placeholder="Password">
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" #authConfirmPassword placeholder="Confirm password">
+        <input type="password" class="form-control" [(ngModel)]="confirmPassword" name="c" placeholder="Confirm password">
       </div>
       <div class="form-group">
-        <button type="submit" (click)="logUpUser(authLogin.value, authEmail.value, filterText.value, authPassword.value, authConfirmPassword.value)"  class="btn btn-primary" id="btnSignUp">Sign Up</button>
+        <button (click)="logUpUser()"  class="btn btn-primary">Sign Up</button>
       </div>
     </form>
   </div>
