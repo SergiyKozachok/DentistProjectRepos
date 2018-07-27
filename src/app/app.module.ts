@@ -19,16 +19,25 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 
 const appRoutes: Routes = [
   {
+    path: 'home',
+    component: IndexOfSiteComponent
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
+  },
+  {
     path: 'login',
     component: LoginFormComponent
   },
   {
     path: 'logup',
     component: LogUpFormComponent
-  },
-  {
-    path: '',
-    component: IndexOfSiteComponent
   },
   {
     path: 'home-for-dentist',
