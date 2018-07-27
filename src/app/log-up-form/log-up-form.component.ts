@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {UserService} from '../user.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-log-up-form',
@@ -9,7 +10,9 @@ import {UserService} from '../user.service';
 })
 export class LogUpFormComponent implements OnInit {
 
-  constructor(private router: Router, private user: UserService) { }
+  constructor(private router: Router,
+              private user: UserService,
+              public flashMessageService: FlashMessagesService) { }
 
   ngOnInit() {
   }
@@ -38,7 +41,9 @@ export class LogUpFormComponent implements OnInit {
         // Save allEntries back to local storage
         existingUsers.push(user);
         localStorage.setItem('allUsers', JSON.stringify(existingUsers));
-        alert('The user of ' + userLogin + 'has been successfully registered');
+        // this.flashMessageService.show('We are in about component!', { cssClass: 'alert-success', timeout: 1000 });
+        this.flashMessageService.show('The user of ' + userLogin + 'has been successfully registered',
+          { cssClass: 'alert-success', timeout: 3000 });
         switch (userRole) {
           case 'Dentist': {
             this.router.navigate(['home-for-dentist']);

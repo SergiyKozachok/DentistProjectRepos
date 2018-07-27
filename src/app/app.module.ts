@@ -14,6 +14,8 @@ import { HomeForInternComponent } from './home-for-intern/home-for-intern.compon
 import { HomeForNorseComponent } from './home-for-norse/home-for-norse.component';
 import {UserService} from './user.service';
 import {AuthguardGuard} from './authguard.guard';
+import {FormsModule} from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 const appRoutes: Routes = [
   {
@@ -62,7 +64,9 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [UserService, AuthguardGuard],
   bootstrap: [AppComponent]

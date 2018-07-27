@@ -2,22 +2,55 @@
   <p>
     home-for-dentist works!
   </p>
+  <form>
+    <div class="row">
+      <div class="col s3">
+        <div class="form-group ">
+          <input class="form-control " id="authLogin" placeholder="Login">
+        </div>
+      </div>
+      <div class="col s3">
+        <div class="form-group">
+          <input type="email" class="form-control" id="authEmail" placeholder="Email">
+        </div>
+      </div>
+      <div class="col s3">
+        <div class="form-group">
+          <select id='filterText' style='display:inline-block' class="form-control">
+            <option disabled selected>-</option>
+            <option value="Dentist">Dentist</option>
+            <option value="Patient">Patient</option>
+            <option value="Nurse">Nurse</option>
+            <option value="Intern">Intern</option>
+          </select>
+        </div>
+      </div>
+      <div class="col s3">
+        <div class="form-group">
+          <button class="btn btn-primary" [(ngModel)]="users">Add user</button>
+        </div>
+      </div>
+    </div>
 
-  <button class="btn btn-primary" (click)="show($event)">Show users</button>
+  </form>
 
   <table>
     <tr>
-      <!--<th>Mark</th>-->
       <th>Login</th>
       <th>Email</th>
       <th>Role</th>
     </tr>
     <tr *ngFor="let u of users">
-      <!--<td><input type="checkbox" value=""></td>-->
       <td>{{u.login}}</td>
       <td>{{u.email}}</td>
       <td>{{u.role}}</td>
     </tr>
   </table>
+
+  <div style="text-align:center">
+    <h1>Hello World</h1>
+    Hello: {{username}}
+    <input type="text" [(ngModel)]="username">
+  </div>
 
 </div>

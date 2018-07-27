@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import { FlashMessagesService } from 'angular2-flash-messages';
+
 
 
 @Component({
@@ -11,12 +13,13 @@ import {forEach} from '@angular/router/src/utils/collection';
 
 
 export class HomeForDentistComponent implements OnInit {
-  public users: [{
+  username  = 'codedamn';
+
+  public users: {
     login: string,
     email: string,
     role: string
-  }
-    ];
+  }[];
 
   constructor(private user: UserService) {
     this.users = [
@@ -29,14 +32,12 @@ export class HomeForDentistComponent implements OnInit {
         login: 'user2',
         email: 'vrvdsf',
         role: 'dgte'
-      }
-      ,
+      },
       {
         login: 'user3',
         email: 'tgetger',
         role: 'grtge'
-      }
-      ,
+      },
       {
         login: 'user4',
         email: 'wr4t3',
@@ -47,5 +48,19 @@ export class HomeForDentistComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  addUser(e) {
+    let user, userLogin, userEmail, userRole;
+    userLogin = e.target.elements[0].value;
+    userEmail = e.target.elements[1].value;
+    userRole = e.target.elements[2].value;
+
+    user = {
+      'login': userLogin,
+      'email': userEmail,
+      'role': userRole
+    };
+    this.users.push(user);
   }
 }
