@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <h2>Sign Up</h2>
-    <form (submit)="logUpUser($event)">
+    <form>
       <div class="form-group">
-        <input class="form-control" id="authLogin" placeholder="Login">
+        <input class="form-control" #authLogin placeholder="Login">
       </div>
       <div class="form-group">
-        <input type="email" class="form-control" id="authEmail" placeholder="Email">
+        <input type="email" class="form-control" #authEmail placeholder="Email">
       </div>
       <div class="form-group">
-        <select id='filterText' style='display:inline-block' class="form-control">
+        <select #filterText style='display:inline-block' class="form-control">
           <option disabled selected>-</option>
           <option value="Dentist">Dentist</option>
           <option value="Patient">Patient</option>
@@ -18,13 +18,13 @@
         </select>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" id="authPassword" placeholder="Password">
+        <input type="password" class="form-control" #authPassword placeholder="Password">
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" id="authConfirmPassword" placeholder="Confirm password">
+        <input type="password" class="form-control" #authConfirmPassword placeholder="Confirm password">
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" id="btnSignUp">Sign Up</button>
+        <button type="submit" (click)="logUpUser(authLogin.value, authEmail.value, filterText.value, authPassword.value, authConfirmPassword.value)"  class="btn btn-primary" id="btnSignUp">Sign Up</button>
       </div>
     </form>
   </div>

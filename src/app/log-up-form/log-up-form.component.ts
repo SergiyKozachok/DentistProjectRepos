@@ -9,6 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./log-up-form.component.css']
 })
 export class LogUpFormComponent implements OnInit {
+  private userLogin;
 
   constructor(private router: Router,
               private user: UserService,
@@ -17,24 +18,24 @@ export class LogUpFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  logUpUser(e) {
-    e.preventDefault();
+  logUpUser(login: string, email: string, role: string, password: string, confirmPassword: string) {
+    console.log(login);
     let existingUsers = JSON.parse(localStorage.getItem('allUsers'));
     if (existingUsers == null) { existingUsers = []; }
 
-    let user, userLogin, userEmail, userRole, userPassword, userConfirmPassword;
-    userLogin = e.target.elements[0].value;
-    userEmail = e.target.elements[1].value;
-    userRole = e.target.elements[2].value;
-    userPassword = e.target.elements[3].value;
-    userConfirmPassword = e.target.elements[4].value;
-    if (this.CheckingTheUserForUniqueness(existingUsers, userLogin)) {
-      if (userPassword === userConfirmPassword) {
+    let user;
+    // userLogin = e.target.elements[0].value;
+    // userEmail = e.target.elements[1].value;
+    // userRole = e.target.elements[2].value;
+    // userPassword = e.target.elements[3].value;
+    // userConfirmPassword = e.target.elements[4].value;
+    //if (this.CheckingTheUserForUniqueness(existingUsers, userLogin)) {
+      if (password === confirmPassword) {
         user = {
-          'login': userLogin,
-          'email': userEmail,
-          'role': userRole,
-          'password': userPassword,
+          'login': login,
+          'email': email,
+          'role': role,
+          'password': password,
         };
         user = JSON.stringify(user);
         localStorage.setItem('user', 'user');
@@ -42,9 +43,9 @@ export class LogUpFormComponent implements OnInit {
         existingUsers.push(user);
         localStorage.setItem('allUsers', JSON.stringify(existingUsers));
         // this.flashMessageService.show('We are in about component!', { cssClass: 'alert-success', timeout: 1000 });
-        this.flashMessageService.show('The user of ' + userLogin + 'has been successfully registered',
+        this.flashMessageService.show('The user of ' + login + 'has been successfully registered',
           { cssClass: 'alert-success', timeout: 3000 });
-        switch (userRole) {
+        switch (role) {
           case 'Dentist': {
             this.router.navigate(['home-for-dentist']);
             break;
@@ -63,9 +64,9 @@ export class LogUpFormComponent implements OnInit {
           }
         }
       } else {
-        alert('Password and confirm password must be the same');
+        this.flashMessageService.show('Password and confirm password must be the same', { cssClass: 'alert-success', timeout: 3000 });
       }
-    }
+    //}
   }
 
   CheckingTheUserForUniqueness (existingUsers, userLogin) {
