@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject } from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService} from '../user.service';
+import {UserService} from '../services/user.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
-
 
 
 @Component({
@@ -33,37 +32,45 @@ export class LogUpFormComponent implements OnInit {
       existingUsers = [];
     }
 
-    let user;
+    let currentUser;
     if (this.password === this.confirmPassword) {
-      user = {
+      currentUser = {
         'login': this.login,
         'email': this.email,
         'role': this.role,
         'password': this.password,
       };
       console.log(this.login, this.email, this.role, this.password, this.confirmPassword);
-      user = JSON.stringify(user);
+      currentUser = JSON.stringify(currentUser);
       localStorage.setItem('user', 'user');
       // Save allEntries back to local storage
-      existingUsers.push(user);
+      existingUsers.push(currentUser);
       localStorage.setItem('allUsers', JSON.stringify(existingUsers));
       // this.flashMessageService.show('We are in about component!', { cssClass: 'alert-success', timeout: 1000 });
       this.flashMessageService.show('The user of ' + this.login + 'has been successfully registered',
         {cssClass: 'alert-success', timeout: 3000});
+      // if (this.login === 'admin' && this.password === 'admin') {
+      //   this.user.setUserLoggedIn();
+      //   this.router.navigate(['home-for-dentist']);
+      // }
       switch (this.role) {
         case 'Dentist': {
+          this.user.setUserLoggedIn();
           this.router.navigate(['home-for-dentist']);
           break;
         }
         case 'Patient': {
+          this.user.setUserLoggedIn();
           this.router.navigate(['home-for-patient']);
           break;
         }
         case 'Nurse': {
+          this.user.setUserLoggedIn();
           this.router.navigate(['home-for-norse']);
           break;
         }
         case 'Intern': {
+          this.user.setUserLoggedIn();
           this.router.navigate(['home-for-intern']);
           break;
         }

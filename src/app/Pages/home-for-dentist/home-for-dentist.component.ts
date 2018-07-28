@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../user.service';
+import {UserService} from '../../services/user.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
