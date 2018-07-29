@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <h2>Sign In</h2>
-    <form (submit)="logInUser($event)">
+    <form>
       <div class="form-group">
-        <input class="form-control" id="signInLogin" placeholder="Login">
+        <input [(ngModel)]="userLogin" name="l" class="form-control" id="signInLogin" placeholder="Login">
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" id="signInPassword" placeholder="Password">
+        <input [(ngModel)]="userPassword" name="p" type="password" class="form-control" id="signInPassword" placeholder="Password">
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" id="btnSignIn">Sign In</button>
+        <button (click)="logInUser()" class="btn btn-primary" id="btnSignIn">Sign In</button>
       </div>
     </form>
   </div>

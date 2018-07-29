@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FlashMessagesService} from 'angular2-flash-messages';
+import {Router} from '@angular/router';
+import {UserService} from '../services/user.service';
+
 
 @Component({
   selector: 'app-login-form',
@@ -7,31 +11,67 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  userLogin: string;
+  userPassword: string;
+  public existingUsers: { login: string, password: string, email: string, role: string } [];
+
+
+  constructor(private router: Router,
+              private user: UserService,
+              public flashMessageService: FlashMessagesService) {
+  }
 
   ngOnInit() {
   }
-  logInUser(e) {
-    let existingUsers, currentUserLogin, currentUserPassword, findUser;
-    existingUsers = JSON.parse(localStorage.getItem('allUsers'));
-    currentUserLogin = e.target.elements[0].value;
-    currentUserPassword = e.target.elements[1].value;
-    findUser = false;
-    if (existingUsers == null) {
-      alert('You are not registered, sign up and try again');
+
+  logInUser() {
+    this.existingUsers = JSON.parse(localStorage.getItem('allUsers'));
+    let findUser = false;
+    console.log(this.userLogin, this.userPassword);
+    console.log(this.existingUsers[0].login);
+    console.log(JSON.parse(localStorage.getItem('allUsers')));
+    if (this.existingUsers == null) {
+      this.flashMessageService.show('You are not registered, sign up and try again',
+        {cssClass: 'alert-success', timeout: 3000});
     }
-    for (let i = 0; i < existingUsers.length; i++) {
-      if (existingUsers[i].login === currentUserLogin) {
-        if (existingUsers[i].password === currentUserPassword) {
-          alert('Sign in successfully');
+    for (let i = 0; i < this.existingUsers.length; i++) {
+      console.log(this.existingUsers[i].login);
+      if (this.existingUsers[i].login === this.userLogin) {
+        if (this.existingUsers[i].password === this.userPassword) {
+          switch (this.existingUsers[i].role) {
+            case 'Dentist': {
+              this.user.setUserLoggedIn();
+              this.router.navigate(['home-for-dentist']);
+              break;
+            }
+            case 'Patient': {
+              this.user.setUserLoggedIn();
+              this.router.navigate(['home-for-patient']);
+              break;
+            }
+            case 'Nurse': {
+              this.user.setUserLoggedIn();
+              this.router.navigate(['home-for-norse']);
+              break;
+            }
+            case 'Intern': {
+              this.user.setUserLoggedIn();
+              this.router.navigate(['home-for-intern']);
+              break;
+            }
+          }
+          this.flashMessageService.show('Sign in successfully',
+            {cssClass: 'alert-success', timeout: 3000});
         } else {
-          alert('Password entered incorrectly');
+          this.flashMessageService.show('Password entered incorrectly',
+            {cssClass: 'alert-success', timeout: 3000});
         }
         findUser = true;
       }
     }
     if (findUser === false) {
-      alert('You are not registered, sign up and try again');
+      this.flashMessageService.show('You are not registered, sign up and try again',
+        {cssClass: 'alert-success', timeout: 3000});
     }
   }
 

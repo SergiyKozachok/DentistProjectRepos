@@ -1,15 +1,15 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { GuardForInternGuard } from './guard-for-intern.guard';
+import { ForInternGuard } from './guard-for-intern.guard';
 
-describe('GuardForInternGuard', () => {
+describe('ForInternGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GuardForInternGuard]
+      providers: [ForInternGuard]
     });
   });
 
-  it('should ...', inject([GuardForInternGuard], (guard: GuardForInternGuard) => {
+  it('should ...', inject([ForInternGuard], (guard: ForInternGuard) => {
     expect(guard).toBeTruthy();
   }));
 });
