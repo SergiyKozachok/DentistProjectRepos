@@ -31,6 +31,8 @@ import { SecondSubcategoryForInternComponent } from './Pages/Intern/second-subca
 import { FirstSubcategoryForInternComponent } from './Pages/Intern/first-subcategory-for-intern/first-subcategory-for-intern.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import { DentistProfileComponent } from './Pages/Dentist/dentist-profile/dentist-profile.component';
+import { SearchDentistByNamePipe } from './Pipes/search-dentist-by-name.pipe';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -81,7 +83,9 @@ const appRoutes: Routes = [
     FirstSubcategoryForNurseComponent,
     SecondSubcategoryForNurseComponent,
     SecondSubcategoryForInternComponent,
-    FirstSubcategoryForInternComponent
+    FirstSubcategoryForInternComponent,
+    DentistProfileComponent,
+    SearchDentistByNamePipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

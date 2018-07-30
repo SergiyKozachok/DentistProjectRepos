@@ -1,3 +1,18 @@
 <p>
   first-subcategory-for-patient works!
 </p>
+<div class="container">
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="first_name" type="text" class="validate" [(ngModel)]="search" name="search">
+      <label class="active" for="first_name">Search for name</label>
+    </div>
+  </div>
+  <div class="row">
+    <app-dentist-profile
+      *ngFor="let dentist of dentists | searchDentistByName: search"
+      [dentist]="dentist"
+    ></app-dentist-profile>
+  </div>
+</div>
+
