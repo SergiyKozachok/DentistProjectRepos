@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private user: UserService,
+              private userService: UserService,
               public flashMessageService: FlashMessagesService) {
   }
 
@@ -39,23 +39,28 @@ export class LoginFormComponent implements OnInit {
       if (this.existingUsers[i].login === this.userLogin) {
         if (this.existingUsers[i].password === this.userPassword) {
           switch (this.existingUsers[i].role) {
+            case 'Admin': {
+              this.userService.setUserLoggedIn();
+              this.router.navigate(['home']);
+              break;
+            }
             case 'Dentist': {
-              this.user.setUserLoggedIn();
+              this.userService.setUserLoggedIn();
               this.router.navigate(['home-for-dentist']);
               break;
             }
             case 'Patient': {
-              this.user.setUserLoggedIn();
+              this.userService.setUserLoggedIn();
               this.router.navigate(['home-for-patient']);
               break;
             }
             case 'Nurse': {
-              this.user.setUserLoggedIn();
+              this.userService.setUserLoggedIn();
               this.router.navigate(['home-for-norse']);
               break;
             }
             case 'Intern': {
-              this.user.setUserLoggedIn();
+              this.userService.setUserLoggedIn();
               this.router.navigate(['home-for-intern']);
               break;
             }
