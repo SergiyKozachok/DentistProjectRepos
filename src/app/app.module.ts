@@ -33,9 +33,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { DentistProfileComponent } from './Pages/Dentist/dentist-profile/dentist-profile.component';
 import { SearchDentistByNamePipe } from './Pipes/search-dentist-by-name.pipe';
+import { ExampleComponent } from './Pages/example/example.component';
+import { ChildComponent } from './Pages/child/child.component';
+import { HoverDirectiveDirective } from './Directives/hover-directive.directive';
+import { Child2Component } from './Pages/child2/child2.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', canActivate: [], component: IndexOfSiteComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'logup', component: LogUpFormComponent },
@@ -60,7 +64,10 @@ const appRoutes: Routes = [
   { path: 'home-for-intern/:first-subcategory-for-intern', canActivate: [ForInternGuard, ForAdminGuard], component: FirstSubcategoryForInternComponent},
   { path: 'home-for-intern/:second-subcategory-for-intern', canActivate: [ForInternGuard, ForAdminGuard], component: SecondSubcategoryForInternComponent},
 
-  { path: '**', redirectTo: 'home' }
+  { path: 'example', component: ExampleComponent },
+  { path: 'child', component: ChildComponent},
+
+  { path: '**', redirectTo: '/home' }
 ];
 
 
@@ -85,7 +92,11 @@ const appRoutes: Routes = [
     SecondSubcategoryForInternComponent,
     FirstSubcategoryForInternComponent,
     DentistProfileComponent,
-    SearchDentistByNamePipe
+    SearchDentistByNamePipe,
+    ExampleComponent,
+    ChildComponent,
+    HoverDirectiveDirective,
+    Child2Component,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -6,11 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./dentist-profile.component.css']
 })
 export class DentistProfileComponent implements OnInit {
-
+  @Input() dentist: any ;
   constructor() { }
 
   ngOnInit() {
   }
 
-  @Input() dentist;
 }

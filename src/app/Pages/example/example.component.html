@@ -1,0 +1,15 @@
+<p>
+  example works!
+</p>
+<app-child></app-child>
+<button (click)="sendMsg()">Send message to Child</button>
+<h4 appHoverDirective="pink">Example of Custom Directive</h4>
+<input type="color" [(ngModel)]="selectorColor">
+<input type="text" #fName><br>
+<input type="text" #lName>
+<app-child2></app-child2>
+<app-child2></app-child2>
+<app-child2></app-child2>
+<app-child2></app-child2>
+<button (click)="sendMessageToChildSecond()">send Message To Child Second</button>
+

@@ -17,7 +17,7 @@ export class LogUpFormComponent implements OnInit {
   confirmPassword: string;
 
   constructor(private router: Router,
-              private user: UserService,
+              private userService: UserService,
               public flashMessageService: FlashMessagesService) {
   }
 
@@ -25,8 +25,6 @@ export class LogUpFormComponent implements OnInit {
   }
 
   logUpUser() {
-    console.log(this.password);
-
     let existingUsers = JSON.parse(localStorage.getItem('allUsers'));
     if (existingUsers == null) {
       existingUsers = [];
@@ -40,16 +38,11 @@ export class LogUpFormComponent implements OnInit {
         'role': this.role,
         'password': this.password,
       };
-      console.log(this.login, this.email, this.role, this.password, this.confirmPassword);
 
       const User = JSON.stringify(currentUser);
-      localStorage.setItem('user', User); //use different object
+      localStorage.setItem('user', User);
       // Save allEntries back to local storage
       existingUsers.push(currentUser);
-      // //currentUser = JSON.stringify(currentUser);
-      // localStorage.setItem('user', JSON.stringify(currentUser));
-      // // Save allEntries back to local storage
-      // existingUsers.push(currentUser);
       localStorage.setItem('allUsers', JSON.stringify(existingUsers));
       // this.flashMessageService.show('We are in about component!', { cssClass: 'alert-success', timeout: 1000 });
       this.flashMessageService.show('The user of ' + this.login + 'has been successfully registered',
